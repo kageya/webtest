@@ -319,14 +319,19 @@ function drawTile(hyoko) {
     var mesh = new THREE.Mesh(geometry, material);
 
     var dx = 0, dy = 0;
-    mesh.position.x = tileW * dx -  tileW / 2;
-    mesh.position.y = -(tileH * dy - tileH / 2);
+//    mesh.position.x = tileW * dx -  tileW / 2;
+//    mesh.position.y = -(tileH * dy - tileH / 2);
+    mesh.position.x = 512;
+    mesh.position.y = -1024;
     scene.add(mesh);
     var material = new THREE.MeshBasicMaterial({ color: 0x888888, wireframe: true })
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = tileW * dx - tileW / 2;
-    mesh.position.y = -(tileH * dy - tileH / 2);
+//    mesh.position.x = tileW * dx - tileW / 2;
+//    mesh.position.y = -(tileH * dy - tileH / 2);
+    mesh.position.x = 512;
+    mesh.position.y = -1024;
     scene.add(mesh);
+    document.getElementById("content").innerHTML = "position " + mesh.position.x + ":" + mesh.position.y;
 
 //    var geometryLine = new THREE.Geometry();
 //    geometryLine.vertices[0] = new THREE.Vector3(150, 0, 0);
