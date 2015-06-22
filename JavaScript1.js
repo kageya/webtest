@@ -53,24 +53,24 @@ function initCamera() {
     camera.lookAt({x:0, y:0, z:0});
     //scene.add(camera);
 
-//    document.getElementById("content").innerHTML = "initCamera 11";
-//    trackball = new THREE.TrackballControls(camera, canvasFrame);
-//    document.getElementById("content").innerHTML = "initCamera 22";
-//    trackball.screen.width = canvasFrame.clientWidth;
-//    trackball.screen.height = canvasFrame.clientHeight;
-//    trackball.screen.offsetLeft = canvasFrame.getBoundingClientRect.left;
-//    trackball.screen.offsetTop = canvasFrame.getBoundingClientRect.top;
+    document.getElementById("content").innerHTML = "initCamera 11";
+    trackball = new THREE.TrackballControls(camera, canvasFrame);
+    document.getElementById("content").innerHTML = "initCamera 22";
+    trackball.screen.width = canvasFrame.clientWidth;
+    trackball.screen.height = canvasFrame.clientHeight;
+    trackball.screen.offsetLeft = canvasFrame.getBoundingClientRect.left;
+    trackball.screen.offsetTop = canvasFrame.getBoundingClientRect.top;
 
-//    trackball.noRotate = false;
-//    trackball.rotateSpeed = 4.0;
-//    trackball.noZoom = false;
-//    trackball.zoomSpeed = 4.0;
-//    trackball.noPan = false;
-//    trackball.panSpeed = 1.0;
-//    trackball.target = new THREE.Vector3(0, 10, 0);
+    trackball.noRotate = false;
+    trackball.rotateSpeed = 4.0;
+    trackball.noZoom = false;
+    trackball.zoomSpeed = 4.0;
+    trackball.noPan = false;
+    trackball.panSpeed = 1.0;
+    trackball.target = new THREE.Vector3(0, 10, 0);
 
-//    trackball.staticMoving = true;
-    //    trackball.dynamicDampingFactor = 0.3;
+    trackball.staticMoving = true;
+    trackball.dynamicDampingFactor = 0.3;
 
 //    controls = new THREE.FlyControls(camera, canvasFrame);
 //    controls.movementSpeed = 100.0;
@@ -156,6 +156,7 @@ function loop() {
 
 function animate() {
 //    renderer.clear()
+    trackball.update();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 
@@ -276,10 +277,10 @@ function readTile() {
 //---------------------------------------------------------
 function drawTile(hyoko) {
     //地図画像をロードしてマテリアルを作成
-//    var img = "http://cyberjapandata.gsi.go.jp/xyz/std/14/14547/6463.png";
-//    THREE.ImageUtils.crossOrigin = "*";        //他鯖のイメージを読み込む
-//    var texture = THREE.ImageUtils.loadTexture(img);
-//    var material = new THREE.MeshLambertMaterial({ color: 0x00ff00, map: texture });
+    var img = "http://cyberjapandata.gsi.go.jp/xyz/std/14/14511/6332.png";
+    THREE.ImageUtils.crossOrigin = "*";        //他鯖のイメージを読み込む
+    var texture = THREE.ImageUtils.loadTexture(img);
+    var material = new THREE.MeshBasicMaterial({ map: texture });
 
     //ジオメトリを作成
     if (hyoko == undefined || hyoko.length == 0) {
@@ -311,7 +312,7 @@ function drawTile(hyoko) {
     }
 
     //メッシュを作ってシーンに追加
-    var material = new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, blending: THREE.NormalBlending, opacity: 0.7 });
+//    var material = new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, blending: THREE.NormalBlending, opacity: 0.7 });
 //    var material = new THREE.ShaderMaterial({
 //        vertexShader: document.getElementById('vertexShader').textContent,
 //        fragmentShader: document.getElementById('fragmentShader').textContent,
@@ -324,13 +325,14 @@ function drawTile(hyoko) {
     mesh.position.x = 512;
     mesh.position.y = -1024;
     scene.add(mesh);
-    var material = new THREE.MeshBasicMaterial({ color: 0x888888, wireframe: true })
-    var mesh = new THREE.Mesh(geometry, material);
+
+//    var material = new THREE.MeshBasicMaterial({ color: 0x888888, wireframe: true })
+//    var mesh = new THREE.Mesh(geometry, material);
 //    mesh.position.x = tileW * dx - tileW / 2;
 //    mesh.position.y = -(tileH * dy - tileH / 2);
-    mesh.position.x = 512;
-    mesh.position.y = -1024;
-    scene.add(mesh);
+//    mesh.position.x = 512;
+//    mesh.position.y = -1024;
+//    scene.add(mesh);
     document.getElementById("content").innerHTML = "position " + mesh.position.x + ":" + mesh.position.y;
 
 //    var geometryLine = new THREE.Geometry();
